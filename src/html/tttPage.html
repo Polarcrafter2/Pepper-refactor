@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- tttPage.html -->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+		<title>TicTacToe-Seite</title>
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<script src="scripts/jquery-2.2.2.min.js"></script>
+		<script src="scripts/jquery.qimhelpers.js"></script>
+		
+		<script src="scripts/angular.min.js"></script>
+		<script src="scripts/angular-animate.js"></script>
+		<link rel="stylesheet" href="ttt.css" />
+		<script src="scripts/pepperController.js"></script>
+		<!--		<script src="scripts/mainTTT.js"></script>
+		-->
+		<STYLE TYPE="text/css">
+			<!--
+			P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			TD P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			H1 { color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-style: normal }
+			-->
+		</STYLE>
+		<style>
+			body {
+				background-color: #73c9e7;
+			}
+			.playButton {
+				width: 170px;
+				height: 80px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 20px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #4e67c8;
+				border: 2px solid #5e77d8; /* Green */
+				border-radius: 15px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.playButton:hover {
+				background-color: #214be7;
+			}
+			.playButton:active {
+				background-color: #1532a0;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+		</style>
+	</head>
+
+	<body align="center">
+		<div class="container" ng-app="ticTacToe">
+			<div ng-controller="TicTacToeController as ticTacToe">
+				<div >
+					<CENTER >
+						<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR="#ccffff">
+							<COL WIDTH=256*>
+							<TR>
+								<TD VALIGN=TOP>
+								<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+								</P></TD>
+							</TR>
+						</TABLE>
+					</CENTER>
+					<h1>Versuche, drei "X" in einer Reihe oder einer Spalte
+					<br>
+					oder einer Diagonale zu setzen...</h1>
+				</div>
+
+				<div class="row">
+					<div class="col-span text-center text-container">
+						<h3 ng-animate-swap="ticTacToe.words" class="animation absolute">{{ticTacToe.words}}</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-span">
+						<div class="auto-margin">
+							<table class="table tic-tac-toe-table text-center">
+								<tr>
+									<td>
+									<button ng-click="ticTacToe.play(0)" class="btn btn-default board-button">
+										{{ticTacToe.game[0]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(1)" class="btn btn-default board-button">
+										{{ticTacToe.game[1]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(2)" class="btn btn-default board-button">
+										{{ticTacToe.game[2]}}
+									</button></td>
+								</tr>
+								<tr>
+									<td>
+									<button ng-click="ticTacToe.play(3)" class="btn btn-default board-button">
+										{{ticTacToe.game[3]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(4)" class="btn btn-default board-button">
+										{{ticTacToe.game[4]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(5)" class="btn btn-default board-button">
+										{{ticTacToe.game[5]}}
+									</button></td>
+								</tr>
+								<tr>
+									<td>
+									<button ng-click="ticTacToe.play(6)" class="btn btn-default board-button">
+										{{ticTacToe.game[6]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(7)" class="btn btn-default board-button">
+										{{ticTacToe.game[7]}}
+									</button></td>
+									<td>
+									<button ng-click="ticTacToe.play(8)" class="btn btn-default board-button">
+										{{ticTacToe.game[8]}}
+									</button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<center>
+					<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 >
+						<COL WIDTH=173>
+						<COL WIDTH=50>
+						<COL WIDTH=173>
+						<COL WIDTH=50>
+						<COL WIDTH=173>
+						<COL WIDTH=50>
+						<COL WIDTH=173>
+						<TR VALIGN=TOP>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button class="playButton" onclick="window.location.href = 'tttPage.html';">
+									Neues Spiel beginnen
+								</button>
+							</P></TD>
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button class="playButton" ng-click="ticTacToe.compFirst()" >
+									Pepper soll beginnen
+								</button>
+							</P></TD>
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button class="playButton" onclick="window.location.href = 'page02.html#page121';">
+									Spielauswahl
+								</button>
+							</P></TD>
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button class="playButton" onclick="window.location.href = 'page02.html';">
+									Hauptauswahl
+								</button>
+							</P></TD>
+					</TABLE>
+				</center>
+			</div>
+			<script src="scripts/ttt.js" ></script>
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,603 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<head>
+		<meta charset="utf-8">
+		<title>Hauptauswahl</title>
+		<!--		<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+		-->
+		<meta name="viewport" content="width=1280, user-scalable=no" />
+		<link rel="stylesheet" href="themeVSbasic/VSbasic.min.css" />
+		<link rel="stylesheet" href="themeVSbasic/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="scripts/jquery.mobile.structure-1.4.5.min.css" />
+
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<script src="scripts/jquery-2.2.2.min.js"></script>
+		<script src="scripts/jquery.qimhelpers.js"></script>
+		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+		<script src="scripts/pepperController.js"></script>
+		<script src="scripts/page02Controller.js"></script>
+		<script src="scripts/page02.js"></script>
+
+		<STYLE TYPE="text/css">
+			<!--
+			P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			P2 { color: #000000; font-size: 18pt; font-weight: normal }
+			PF { color: #ccccdd; font-size: 20pt }
+			H1 { color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-style: normal }
+			H2{ color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-size: 18pt; font-style: normal }
+			-->
+		</STYLE>
+		<style>
+			.imageButton {
+				width: 150px;
+				height: 200px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 24px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #6CcF70;
+				border: 2px solid #5CaF50; /* Green */
+				border-radius: 15px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.imageButton:hover {
+				background-color: #3e8e41
+			}
+			.imageButton:active {
+				background-color: #3e8e41;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+
+			.playButton {
+				width: 140px;
+				height: 100px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 20px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #4e67c8;
+				border: 2px solid #5e77d8; /* Green */
+				border-radius: 5px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.playButton:hover {
+				background-color: #214be7;
+			}
+			.playButton:active {
+				background-color: #1532a0;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+			.weiterButton {
+				font-size: 24px;
+			}
+		</style>
+	</head>
+
+	<BODY>
+		<div data-role="page" id="page02">
+			<!-- Intro-Seite noch vor Hauptauswhal -->
+			<div data-role="header" >
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% HEIGHT=167 VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</div>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Hauptauswahl: einfach anklicken... </H1>
+
+				<center>
+					<TABLE WIDTH=631 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=203>
+						<COL WIDTH=40>
+						<COL WIDTH=211>
+						<COL WIDTH=40>
+						<COL WIDTH=203>
+						<TR VALIGN=TOP>
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								<button id="gotoBürgeramt"  class="imageButton">
+									<img src="bilder/wappenVS.png" width="90px">
+									<BR>
+									Bürgeramt
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								<button id="gotoSpiele"  class="imageButton">
+									<img src="bilder/logoSpiel.png" width="90px">
+									<BR>
+									Spiele
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER >
+								<button id="gotoHFU"  class="imageButton">
+									<img src="bilder/logoHFU.png" width="130px">
+									<BR>
+									Hochschule
+								</button>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von Hauptauswahl -->
+
+		<div data-role="page" id="page11">
+			<!-- Überleitung / page11 nach BürgeramtAuwahl p111 -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Schön, daß Sie hier bei uns im Bürgeramt sind! </H1>
+				<center>
+					<TABLE WIDTH=631 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=150>
+						<COL WIDTH=20>
+						<COL WIDTH=203>
+						<TR VALIGN=TOP>
+							<TD WIDTH=50>
+							<P ALIGN=CENTER>
+								<img src="bilder/wappenVS.png" width="200px">
+								<BR>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								Ich freue mich, Ihnen hoffentlich helfen zu können...
+							</P>
+							<p align=right>
+								<button id="gotoBürgeramtAuswahl"  class="weiterButton">
+									weiter >>
+								</button>
+							</p></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout11">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex11" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: page 11 Übergang zu Bürgeramt: Neubürger / Altbürger -->
+
+		<div data-role="page" id="page111">
+			<!-- page 111 Auswahl Bürgeramt: Neubürger / Altbürger -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H2 ALIGN=CENTER> Darf ich Sie als frischzugezogenen Neubürger hier in VS begrüßen,
+				<BR>
+				oder kennen wir uns schon als Altbürger?
+				<br>
+				Bitte wählen Sie aus: </H2>
+				<center>
+					<TABLE WIDTH=440 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=173>
+						<COL WIDTH=90>
+						<COL WIDTH=173>
+						<TR VALIGN=TOP>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoNeubürger"  class="imageButton" >
+									<img src="bilder/wappenVS.png" width="110px" align=center>
+									<BR>
+									Neubürger
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoAltbürger"  class="imageButton" >
+									<img src="bilder/wappenVS.png" width="110px">
+									<BR>
+									Altbürger
+								</button>
+							</P></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" id="toAbout111">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="action" id="gotoPage02_111">
+							<pf>
+								Hauptauswahl<pf>
+							</a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex111" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: page 111 Auswahl Bürgeramt: Neubürger / Altbürger-->
+
+		<div data-role="page" id="page12">
+			<!-- Überleitung / page12 nach Spiele: -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Jetzt wird es spannend... </H1>
+				<center>
+					<TABLE WIDTH=631 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=150>
+						<COL WIDTH=20>
+						<COL WIDTH=203>
+						<TR VALIGN=TOP>
+							<TD WIDTH=50>
+							<P ALIGN=CENTER>
+								<img src="bilder/logoSpiel.png" width="120px">
+								<BR>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								... wir könnten vielleicht ein kleines Spiel zusammen spielen, oder?
+							</P>
+							<p align=right>
+								<button id="gotoSpieleAuswahl"  class="weiterButton">
+									weiter >>
+								</button>
+							</p></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout12">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex12" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: page 12 Übergang zu Spiele: Memory oder TTT -->
+
+		<div data-role="page" id="page121">
+			<!-- page 121 Auswahl Spiele: Memory oder TTT -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Wollen wir ein kleines Spiel zusammen spielen?
+				<br>
+				Bitte wählen Sie aus: </H1>
+				<center>
+					<TABLE WIDTH=440 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=173>
+						<COL WIDTH=90>
+						<COL WIDTH=173>
+						<TR VALIGN=TOP>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoMemory"  class="imageButton" >
+									<img src="bilder/logoMemory.png" width="125px" align=center>
+									<BR>
+									Memory
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoTTT"  class="imageButton" >
+									<img src="bilder/logoTTT1.png" width="120px">
+									<BR>
+									Tic Tac Toe
+								</button>
+							</P></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout121">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="action" id="gotoPage02_121">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex121" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: page 121 Auswahl Spiele: Memory oder TTT -->
+
+		<div data-role="page" id="page13">
+			<!-- Überleitung / page13 nach HFU: -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Kooperationspartner HFU... </H1>
+				<center>
+					<TABLE WIDTH=700 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=250>
+						<COL WIDTH=20>
+						<COL WIDTH=353>
+						<TR VALIGN=TOP>
+							<TD WIDTH=50>
+							<P ALIGN=CENTER>
+								<img src="bilder/logoHFU.png" width="240px">
+								<BR>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=350>
+							<P ALIGN=CENTER>
+								In Villingen-Schwenningen gibt es einen Campus der
+								Hochschule Furtwangen - eine der größten Hochschulen
+								im Land Baden-Württemberg...
+							</P>
+							<p align=right>
+								<button id="gotoHFUAuswahl"  class="weiterButton">
+									weiter >>
+								</button>
+							</p></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout13">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex13" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: page 13 Übergang zu HFU: Allgem / IN -->
+
+		<div id="about" data-role="page">
+			<div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER>
+					<p>
+						<FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-weight: bold"> Anwendungs-Entwicklung für den humanoiden Roboter "Pepper" </FONT>
+					</p>
+				</CENTER>
+			</div>
+			<div data-role="content">
+				<p2>
+					Diese Pepper-Anwendung wurde im Rahmen des Projektes VS!digital entwickelt.
+					Ziel ist die Demonstration eines <b>Prototypen</b> für einen innovativen Ansatz zur
+					Steuerung von Besucherströmen in Behörden, Ämtern und anderen öffentlichen
+					Einrichtungen.
+				</p2>
+				<BR>
+				<BR>
+				<p2>
+					Technische Grundlage dieses <b>Demonstrators</b> ist eine Kombination aus zwei
+					Bausteinen:
+					<ul>
+						<li>
+							Der erste Baustein umfaßt die Integration und Steuerung des
+							Pepper-Roboters. Dies wurde mit Hilfe der grafischen Entwicklgunsumgebung
+							<b>"Choregraph"</b> realisiert.
+						</li>
+						<li>
+							Der zweite Baustein ist eine einfache <b>HTML/Javascript-
+							Anwendug</b> für das Android-basierte Tablet von Pepper. Dieses dient als visuelle
+							Komponente des <b>HCI-Modells</b> (<i>Human-Computer-Interaction</i>).
+						</li>
+					</ul>
+				</p2>
+			</div>
+
+			<div data-role="footer" data-position="fixed" >
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Smart Home Labor der Fakultät Informatik, HFU, 2020
+				<BR>
+				<BR>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a data-icon="action" id="gotoPage02">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</BODY>
+</HTML>

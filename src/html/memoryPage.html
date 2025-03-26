@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- memoryPage.html -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Einfacher Test für das memory-Game</title>
+		<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+
+		<link rel="stylesheet" href="memory.css" />
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<script src="scripts/jquery-2.2.2.min.js"></script>
+		<script src="scripts/jquery.qimhelpers.js"></script>
+		<!--	<link rel="stylesheet" href="memory1.css" />
+		-->
+		<script src="scripts/snap.svg.js"></script>
+		<script src="scripts/pepperController.js"></script>
+		<!--		<script src="scripts/mainMemory.js"></script>
+		-->
+		<STYLE TYPE="text/css">
+			<!--
+			P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			H1 { color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-style: normal }
+			-->
+		</STYLE>
+		<style>
+			body {
+				background-color: #73c9e7;
+			}
+			.playButton {
+				width: 170px;
+				height: 80px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 20px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #4e67c8;
+				border: 2px solid #5e77d8; /* Green */
+				border-radius: 15px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.playButton:hover {
+				background-color: #214be7;
+			}
+			.playButton:active {
+				background-color: #1532a0;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+		</style>
+
+	</head>
+
+	<body align="center">
+		<div >
+			<CENTER >
+				<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR="#ccffff">
+					<COL WIDTH=256*>
+					<TR>
+						<TD   VALIGN=TOP>
+						<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+						</P></TD>
+					</TR>
+				</TABLE>
+			</CENTER>
+			<h1>Klicke die Karten an und versuche, Pärchen zu finden!</h1>
+		</div>
+		<div>
+			<br>
+			<script src="scripts/memory.js"></script>
+		</div>
+		<center>
+			<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 >
+				<COL WIDTH=173>
+				<COL WIDTH=90>
+				<COL WIDTH=173>
+				<COL WIDTH=90>
+				<COL WIDTH=173>
+				<TR VALIGN=TOP>
+					<TD WIDTH=170>
+					<P ALIGN=CENTER>
+						<button class="playButton" onclick="window.location.href = 'memoryPage.html';">
+							Neues Spiel beginnen
+						</button>
+					</P></TD>
+
+					<TD WIDTH=8>
+					<BR>
+					</TD>
+
+					<TD WIDTH=170>
+					<P ALIGN=CENTER>
+						<button class="playButton" onclick="window.location.href = 'page02.html#page121';">
+							Spielauswahl
+						</button>
+					</P></TD>
+
+					<TD WIDTH=8>
+					<BR>
+					</TD>
+
+					<TD WIDTH=170>
+					<P ALIGN=CENTER>
+						<button class="playButton" onclick="window.location.href = 'page02.html';">
+							Hauptauswahl
+						</button>
+					</P></TD>
+			</TABLE>
+		</center>
+	</body>
+</html>

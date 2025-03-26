@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Auswahl Altbürger </title>
+
+		<!--		<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+		-->
+		<meta name="viewport" content="width=1280, user-scalable=no" />
+		<link rel="stylesheet" href="themeVSbasic/VSbasic.min.css" />
+		<link rel="stylesheet" href="themeVSbasic/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="scripts/jquery.mobile.structure-1.4.5.min.css" />
+
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<script src="scripts/jquery-2.2.2.min.js"></script>
+		<script src="scripts/jquery.qimhelpers.js"></script>
+		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+		<script src="scripts/pepperController.js"></script>
+		<script src="scripts/page1112Controller.js"></script>
+		<script src="scripts/page1112.js"></script>
+
+		<STYLE TYPE="text/css">
+			<!--
+			P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			P2 { color: #000000; font-size: 18pt; font-weight: normal }
+			PF { color: #ccccdd; font-size: 20pt }
+			H1 { color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-style: normal }
+			-->
+		</STYLE>
+		<style>
+			.imageButton {
+				width: 150px;
+				height: 180px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 20px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #6CcF70;
+				border: 2px solid #5CaF50; /* Green */
+				border-radius: 15px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.imageButton:hover {
+				background-color: #3e8e41
+			}
+			.imageButton:active {
+				background-color: #3e8e41;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+			ul.myList a {
+				font-size: 24px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" id="page1112">
+			<!-- Auswahl Altürger: Personalwausweis, Kindertagesstätte, Standesamt -->
+			<div data-role="header" data-add-back-btn="true">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</div>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Auswahl für Altbürger: </H1>
+
+				<center>
+					<TABLE WIDTH=694 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<TR VALIGN=TOP>
+							<TD>
+							<P ALIGN=CENTER>
+								<ul data-role='listview' class='myList'>
+									<li>
+										<a id="itemPass"> Reisepaß erneuern</a>
+									</li>
+									<li>
+										<a id="itemStandesamt"> Infos zum Standesamt </a>
+									</li>
+									<li>
+										<a id="itemKinder"> Kind in Kindertagesstätte anmelden </a>
+									</li>
+									<li>
+										<a id="itemAbfall"> Abfallentsorgung</a>
+									</li>
+								</ul>
+							</P></TD>
+
+						</TR>
+					</TABLE>
+				</center>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" id="toAbout1112">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Seite Hauptauswahl-->
+							<a data-icon="action" id="gotoPage02">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="index.html">
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von Auswahl Altbürger (page1112) -->
+
+		<div id="about" data-role="page">
+			<header data-role="header" data-add-back-btn="true">
+				<CENTER>
+					<p>
+						<FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-weight: bold"> Anwendungs-Entwicklung für den humanoiden Roboter "Pepper" </FONT>
+					</p>
+				</CENTER>
+			</header>
+			<div data-role="content">
+				<p2>
+					Diese Pepper-Anwendung wurde im Rahmen des Projektes VS!digital entwickelt.
+					Ziel ist die Demonstration eines <b>Prototypen</b> für einen innovativen Ansatz zur
+					Steuerung von Besucherströmen in Behörden, Ämtern und anderen öffentlichen
+					Einrichtungen.
+				</p2>
+				<BR>
+				<BR>
+				<p2>
+					Technische Grundlage dieses <b>Demonstrators</b> ist eine Kombination aus zwei
+					Bausteinen:
+					<ul>
+						<li>
+							Der erste Baustein umfaßt die Integration und Steuerung des
+							Pepper-Roboters. Dies wurde mit Hilfe der grafischen Entwicklgunsumgebung
+							<b>"Choregraph"</b> realisiert.
+						</li>
+						<li>
+							Der zweite Baustein ist eine einfache <b>HTML/Javascript-
+							Anwendug</b> für das Android-basierte Tablet von Pepper. Dieses dient als visuelle
+							Komponente des <b>HCI-Modells</b> (<i>Human-Computer-Interaction</i>).
+						</li>
+					</ul>
+				</p2>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Smart Home Labor der Fakultät Informatik, HFU, 2020
+				<BR>
+				<BR>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a data-icon="home" id="gotoPage02">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

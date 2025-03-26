@@ -1,0 +1,690 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- pageHFU.html: Auswahl-Seite HFU: Allgem / Fakultät IN / etc. -->
+
+<HTML>
+	<head>
+		<meta charset="utf-8">
+		<title>HFU</title>
+		<!--		<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+		-->
+		<meta name="viewport" content="width=1280, user-scalable=no" />
+		<link rel="stylesheet" href="themeBlackForest/HFU_BlackForest.min.css" />
+		<link rel="stylesheet" href="themeBlackForest/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="scripts/jquery.mobile.structure-1.4.5.min.css" />
+
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<script src="scripts/jquery-2.2.2.min.js"></script>
+		<script src="scripts/jquery.qimhelpers.js"></script>
+		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+		<script src="scripts/pepperController.js"></script>
+		<script src="scripts/pageHFUController.js"></script>
+		<script src="scripts/pageHFU.js"></script>
+
+		<STYLE TYPE="text/css">
+			<!--
+			P { color: #ff2200; font-size: 24pt; font-weight: bold }
+			P2 { color: #000000; font-size: 18pt; font-weight: normal }
+			LI { color: #000000; font-size: 18pt; font-weight: normal }
+			PF { color: #ccccdd; font-size: 20pt }
+			H1 { color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-style: normal }
+			H2{ color: #000000; font-family: "Helvetica", "Arial", sans-serif; font-size: 18pt; font-style: normal }
+			-->
+		</STYLE>
+		<style>
+			.imageButton {
+				width: 150px;
+				height: 200px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 24px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #6CcF70;
+				border: 2px solid #5CaF50; /* Green */
+				border-radius: 15px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.imageButton:hover {
+				background-color: #3e8e41
+			}
+			.imageButton:active {
+				background-color: #3e8e41;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+			.studienButton {
+				width: 150px;
+				height: 330px;
+				display: inline-block;
+				padding: 10px 5px;
+				font-size: 24px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				background-color: #6CcF70;
+				border: 2px solid #5CaF50; /* Green */
+				border-radius: 35px;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);
+			}
+			.studienButton:hover {
+				background-color: #3e8e41
+			}
+			.studienButton:active {
+				background-color: #3e8e41;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+			.weiterButton {
+				font-size: 24px;
+			}
+
+			/* Slideshow-Sachen */
+			* {
+				box-sizing: border-box
+			}
+			body {
+				font-family: Verdana, sans-serif;
+				margin: 0
+			}
+			.mySlides {
+				display: none
+			}
+			img {
+				vertical-align: middle;
+			}
+
+			/* Slideshow container */
+			.slideshow-container {
+				max-width: 1000px;
+				position: relative;
+				margin: auto;
+			}
+
+			/* Next & previous buttons */
+			.prev, .next {
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				width: auto;
+				padding: 16px;
+				margin-top: -22px;
+				color: white;
+				font-weight: 900;
+				font-size: 48px;
+				transition: 0.6s ease;
+				border-radius: 0 3px 3px 0;
+				user-select: none;
+			}
+
+			/* Position the "prev button" to the left */
+			.prev {
+				left: 0;
+				border-radius: 3px 0 0 3px;
+			}
+
+			/* Position the "next button" to the right */
+			.next {
+				right: 0;
+				border-radius: 3px 0 0 3px;
+			}
+
+			/* On hover, add a black background color with a little bit see-through */
+			.prev:hover, .next:hover {
+				background-color: rgba(0.7,0.3,0.3,0.5);
+			}
+
+			/* Caption text */
+			.text {
+				color: #555;
+				font-size: 15px;
+				padding: 8px 12px;
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				text-align: center;
+			}
+
+			/* Number text (1/3 etc) */
+			.numbertext {
+				color: #f2f2f2;
+				font-size: 12px;
+				padding: 8px 12px;
+				position: absolute;
+				top: 0;
+			}
+
+			/* The dots/bullets/indicators */
+			.dot {
+				cursor: pointer;
+				height: 15px;
+				width: 15px;
+				margin: 0 2px;
+				background-color: #bbb;
+				border-radius: 50%;
+				display: inline-block;
+				transition: background-color 0.6s ease;
+			}
+
+			.active, .dot:hover {
+				background-color: #717171;
+			}
+
+			/* Fading animation */
+			.fade {
+				-webkit-animation-name: fade;
+				-webkit-animation-duration: 2.0;
+				animation-name: fade;
+				animation-duration: 2.0s;
+			}
+
+			@-webkit-keyframes fade {
+			from {
+				opacity: .1
+			}
+			to {
+				opacity: 1
+			}
+			}
+
+			@keyframes
+			fade {from {
+				opacity: .4
+			}
+			to {
+				opacity: 1
+			}
+			}
+
+			/* On smaller screens, decrease text size */
+			@media only screen and (max-width: 300px) {
+				.prev, .next, .text {
+					font-size: 11px
+				}
+			}
+		</style>
+	</head>
+
+	<BODY>
+		<div data-role="page" id="pageHFU">
+			<!-- pageHFU Auswahl HFU: allgem / IN -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#ccffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/skylineVS.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=726 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</header>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Hier ist die HFU-Auswahl
+				<br>
+				Bitte wählen Sie aus: </H1>
+				<center>
+					<TABLE WIDTH=440 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=173>
+						<COL WIDTH=90>
+						<COL WIDTH=173>
+						<TR VALIGN=TOP>
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoHFUAllgemein"  class="imageButton" >
+									<img src="bilder/logoHFU.png" width="125px" align=center>
+									<BR>
+									Allgemeine
+									<BR>
+									Infos
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=170>
+							<P ALIGN=CENTER>
+								<button id="gotoHFUIN"  class="imageButton" >
+									<img src="bilder/logoHFU.png" width="120px">
+									<BR>
+									Fakultät
+									<BR>
+									Informatik
+								</button>
+							</P></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAbout">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="action" id="gotoPage02_HFU">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="" id="toIndex" > <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von: pageHFU Auswahl Allgemein / Fakulätt IN / etc. -->
+
+		<div data-role="page" id="pageHFUAllgemein">
+			<!-- Slideshow -->
+			<div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#eeffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/logo1HFU.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=403 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</div>
+
+			<div data-role="content">
+				<center>
+					<div class="slideshow-container">
+						<div class="mySlides fade">
+							<div class="numbertext">
+								1 / 3
+							</div>
+							<img src="bilder/Folie3.png" style="width:80%">
+							<div class="text">
+								HFU: Fakten, Fakten, Fakten...
+							</div>
+						</div>
+
+						<div class="mySlides fade">
+							<div class="numbertext">
+								2 / 3
+							</div>
+							<img src="bilder/Folie4.png" style="width:80%">
+							<div class="text">
+								Informatik ist überall...
+							</div>
+						</div>
+
+						<div class="mySlides fade">
+							<div class="numbertext">
+								3 / 3
+							</div>
+							<img src="bilder/Folie5.png" style="width:80%">
+							<div class="text">
+								Wir machen auch Forschung...
+							</div>
+						</div>
+
+						<a class="prev" onclick="mySlideShow.plusSlides(-1)">&#10094;</a>
+						<a class="next" onclick="mySlideShow.plusSlides(1)">&#10095;</a>
+
+					</div>
+					<br>
+
+					<div style="text-align:center">
+						<span class="dot" onclick="currentSlide(1)"></span>
+						<span class="dot" onclick="currentSlide(2)"></span>
+						<span class="dot" onclick="currentSlide(3)"></span>
+					</div>
+
+				</center>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" id="toAboutAllgemein">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Seite Hauptauswahl-->
+							<a data-icon="action" id="gotoPage02">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="index.html">
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von pageHFU-Allgemein  -->
+
+		<div data-role="page" id="pageHFUInformatik">
+			<!-- Erstmal Intro/Key-facts -->
+			<div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#eeffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/logo1HFU.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=403 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</div>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Die Fakultät Informatik an der HFU... </H1>
+				<center>
+					<TABLE WIDTH=900 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=250>
+						<COL WIDTH=20>
+						<COL WIDTH=553>
+						<TR VALIGN=TOP>
+							<TD WIDTH=50>
+							<P ALIGN=CENTER>
+								<img src="bilder/pepperHead.png" width="240px">
+								<BR>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=550>
+							<ul>
+								<li>
+									ist eine der ältesten Informatik-Fakultäten in Deutschland
+								</li>
+								<li>
+									feiert im nächsten Jahr ihr 50-jähriges Jubiläum
+								</li>
+								<li>
+									hat ca. 600 Studierende
+								</li>
+								<li>
+									belegt in Hochschul-Rankings regelmäßig einen der vordersten Plätze (z.B. WiWo, Zeit)
+								</li>
+
+							</ul>
+							<p align=left>
+								<button id="gotoHFUIN1"  class="weiterButton">
+									weiter >>
+								</button>
+							</p></TD>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" id="toAboutInformatik">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Seite Hauptauswahl-->
+							<a data-icon="action" id="gotoPage02_Allgemein">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="./index.html">
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von pageHFU-Informatik  -->
+
+		<div data-role="page" id="pageHFUIN1">
+			<!-- "Clip "Was ist Informatik" -->
+			<header data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<div role="banner">
+						<h1 aria-level="1" > Was ist Informatik?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC="bilder/logoHFU.png" NAME="Grafik3" WIDTH=100 ALIGN=MIDDLE BORDER=0></h1>
+					</div>
+				</CENTER>
+			</header>
+
+			<div data-role="content" align=center>
+
+				<video id="myINVideo" width="690">
+					<source src="bilder/informatikClip.mp4" type="video/mp4">
+					Ups, hier liegt ein falsches Video-Format vor!
+				</video>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<center>
+					<br>
+					<button class="basicButton" id="myVideoButton">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAUSE ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="myWeiterButton">
+						&nbsp;WEITER >>&nbsp;
+					</button>
+					<br>
+					<br>
+				</center>
+			</div>
+		</div>
+		<!-- Ende von: pageHFUIN1 -->
+
+		<div data-role="page" id="pageHFUIN2">
+			<!-- "page HFUIN2: Studiengänge " -->
+			<div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER >
+					<TABLE WIDTH=100% BORDER=0 BGCOLOR="#eeffff" CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=256*>
+						<TR>
+							<TD WIDTH=100% VALIGN=TOP>
+							<P ALIGN=CENTER><IMG SRC="bilder/logo1HFU.png" NAME="Grafik3" ALIGN=MIDDLE WIDTH=403 BORDER=0>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</CENTER>
+			</div>
+
+			<div data-role="content">
+				<H1 ALIGN=CENTER> Studiengänge der Fakultät Informatik... </H1>
+				<center>
+					<TABLE WIDTH=821 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+						<COL WIDTH=203>
+						<COL WIDTH=40>
+						<COL WIDTH=211>
+						<COL WIDTH=40>
+						<COL WIDTH=203>
+						<COL WIDTH=40>
+						<COL WIDTH=203>
+						<TR VALIGN=TOP>
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								<button id="startInfoAIN"  class="studienButton">
+									<img src="bilder/studiumAIN.png" width="130px">
+									<BR>
+									Allgemeine
+									<BR>
+									Informatik
+									<BR>
+									AIN<BR>(Bachelor)
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER>
+								<button id="startInfoITP"  class="studienButton">
+									<img src="bilder/studiumITP.png" width="130px">
+									<BR>
+									IT-Produkt-
+									<BR>
+									management
+									<BR>
+									ITP<BR>(Bachelor)
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER >
+								<button id="startInfoINM"  class="studienButton">
+									<img src="bilder/studiumINM.png" width="130px">
+									<BR>
+									Informatik
+									<BR>
+									INM<BR>(Master)
+									<BR><BR>
+								</button>
+							</P></TD>
+
+							<TD WIDTH=8>
+							<BR>
+							</TD>
+
+							<TD WIDTH=200>
+							<P ALIGN=CENTER >
+								<button id="startInfoMOS"  class="studienButton">
+									<img src="bilder/studiumMOS.png" width="130px">
+									<BR>
+									Mobile
+									<BR>
+									Systeme
+									<BR>
+									MOS<BR>(Master)
+								</button>
+							</P></TD>
+						</TR>
+					</TABLE>
+				</center>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<!-- About: "Was soll diese Pepper-Anwendung? " -->
+							<a data-icon="info" href="" id="toAboutIN2">
+							<pf>
+								Hintergrundinformation
+							</pf></a>
+						</li>
+						<li>
+							<!-- Zurück zur Einstiegs- und Intro-Seite -->
+							<a data-icon="home" href="index.html"> <!-- href="index.html#index"> -->
+							<pf>
+								Home
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Ende von page HFUIN2 -->
+
+		<div id="about" data-role="page">
+			<div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+				<CENTER>
+					<p>
+						<FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-weight: bold"> Anwendungs-Entwicklung für den humanoiden Roboter "Pepper" </FONT>
+					</p>
+				</CENTER>
+			</div>
+			<div data-role="content">
+				<p2>
+					Diese Pepper-Anwendung wurde im Rahmen des Projektes VS!digital entwickelt.
+					Ziel ist die Demonstration eines <b>Prototypen</b> für einen innovativen Ansatz zur
+					Steuerung von Besucherströmen in Behörden, Ämtern und anderen öffentlichen
+					Einrichtungen.
+				</p2>
+				<BR>
+				<BR>
+				<p2>
+					Technische Grundlage dieses <b>Demonstrators</b> ist eine Kombination aus zwei
+					Bausteinen:
+					<ul>
+						<li>
+							Der erste Baustein umfaßt die Integration und Steuerung des
+							Pepper-Roboters. Dies wurde mit Hilfe der grafischen Entwicklgunsumgebung
+							<b>"Choregraph"</b> realisiert.
+						</li>
+						<li>
+							Der zweite Baustein ist eine einfache <b>HTML/Javascript-
+							Anwendug</b> für das Android-basierte Tablet von Pepper. Dieses dient als visuelle
+							Komponente des <b>HCI-Modells</b> (<i>Human-Computer-Interaction</i>).
+						</li>
+					</ul>
+				</p2>
+			</div>
+
+			<div data-role="footer" data-position="fixed" >
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Smart Home Labor der Fakultät Informatik, HFU, 2020
+				<BR>
+				<BR>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a data-icon="action" id="gotoPage02_About">
+							<pf>
+								Hauptauswahl
+							</pf></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+
+	</BODY>
+</HTML>
