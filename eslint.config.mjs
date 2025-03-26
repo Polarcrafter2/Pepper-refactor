@@ -31,7 +31,8 @@ export default [
       "dist",
       "eslint.config.mjs",
       ".next",
-      "node_modules"
+      "node_modules",
+      "/home/max/projects/daniel/src/assets/translations/translation_de_DE.ts"
     ],
   },
 

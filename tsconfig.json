@@ -68,5 +68,6 @@
   ],
   "exclude": [
     "node_modules",
+    "src/assets/translations/translation_de_DE.ts"
   ]
 }

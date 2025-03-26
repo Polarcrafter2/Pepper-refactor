@@ -2,12 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug in Chrome",
+            "name": "Debug on Chrome",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}",
-            "sourceMaps": true
+            "sourceMaps": true,
+            "preLaunchTask": "vite dev"
         },
     ]
 }

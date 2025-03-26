@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="0.0.1" uuid="11_infoterminal-ade9a3">
+ <names>
+  <name lang="de_DE">Infoterminal</name>
+  <name lang="en_US">Infoterminal</name>
+ </names>
+ <descriptions>
+  <description lang="de_DE">Demo-Applikation eines Infoterminals</description>
+ </descriptions>
+ <supportedLanguages>
+  <language>de_DE</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>de_DE</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <triggerSentences>
+    <sentence lang="de_DE">Infoterminal</sentence>
+    <sentence lang="en_US">Please go on</sentence>
+   </triggerSentences>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <requirements>
+  <naoqiRequirement minVersion="2.5"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
+</package>
