@@ -1,119 +1,115 @@
 // pepper-controller.ts: provides API / Control-Functions of Pepper Robot
 
-export class PepperController() {
-    public const isProduction: boolean = process.env.NODE_ENV === 'production';
+import { debugLogger } from "../utils";
 
-    constructor() { 
-        window.console.log("PepperController initialisiert");
-        // Prüfen, ob echter Pepper mit echtem Tablet
-        // falls Windows-System: dann keine pepper-Funktionen aufrufen!!
-        if (window.navigator.userAgent.indexOf("Windows NT") != -1) {
-          isDesktop = true;
-        }
-        window.console.log("PepperController: isDesktop= ", isDesktop);
+export class PepperController {
+  public isProduction: boolean = process.env.NODE_ENV === "production";
 
-    }
-    
-  self.init = function () {
-  };
+  constructor() {
+    debugLogger("PepperController initialisiert");
+    // if (window.navigator.userAgent.indexOf("Windows NT") != -1) {
+    //   this.isProduction = true;
+    // }
+    debugLogger("PepperController: this.isProduction= ", this.isProduction);
+  }
 
-  this.animatedSpeak = function (role, meinText) {
-    window.console.log(`pepperCtrl animatedSpeak: ${role} ${meinText}`);
+  animatedSpeak(role: PepperControllerRole, meinText: string): void {
+    debugLogger(`pepperCtrl animatedSpeak: ${role} ${meinText}`);
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
-    if (isDesktop == false) {
-      if (role == "Boy") {
+    if (!this.isProduction) {
+      if (role === PepperControllerRole.Boy) {
         $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventBoy", meinText);
       } else {
         $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", meinText);
       }
     }
-  };
+  }
 
-  this.animatedSpeakAngry = function (role, meinText) {
-    window.console.log(`pepperCtrl animatedSpeakAngry: ${role} ${meinText}`);
+  animatedSpeakAngry(role: PepperControllerRole, meinText: string): void {
+    debugLogger(`pepperCtrl animatedSpeakAngry: ${role} ${meinText}`);
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
-    if (isDesktop == false) {
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventAngry", meinText);
     }
-  };
+  }
 
-  this.volPlus = function () {
-    window.console.log("pepperCtrl volPlus");
-    if (isDesktop == false) {
+  volPlus(): void {
+    debugLogger("pepperCtrl volPlus");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/VolLauter");
     }
-  };
+  }
 
-  this.volMinus = function () {
-    window.console.log("pepperCtrl volMinus");
-    if (isDesktop == false) {
+  volMinus(): void {
+    debugLogger("pepperCtrl volMinus");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/VolLeiser");
     }
-  };
+  }
 
-  this.setMute = function () {
-    window.console.log("pepperCtrl setMute");
-    if (isDesktop == false) {
+  setMute(): void {
+    debugLogger("pepperCtrl setMute");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 1);
     }
-  };
+  }
 
-  this.setUnmute = function () {
-    window.console.log("pepperCtrl setUnmute");
-    if (isDesktop == false) {
+  setUnmute(): void {
+    debugLogger("pepperCtrl setUnmute");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 0);
     }
-  };
+  }
 
-  this.winner = function (meinText) {
-    window.console.log(`pepperCtrl winner: ${meinText}`);
-    if (isDesktop == false) {
+  winner(meinText: string): void {
+    debugLogger(`pepperCtrl winner: ${meinText}`);
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/WinnerEvent", meinText);
     }
-  };
+  }
 
-  this.looser = function (meinText) {
-    window.console.log(`pepperCtrl looser: ${meinText}`);
-    if (isDesktop == false) {
+  looser(meinText: string): void {
+    debugLogger(`pepperCtrl looser: ${meinText}`);
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/LooserEvent", meinText);
     }
-  };
+  }
 
-  this.shutUp = function () {
-    window.console.log("pepperCtrl shutUp! ");
-    if (isDesktop == false) {
+  shutUp(): void {
+    debugLogger("pepperCtrl shutUp! ");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpEvent", "");
     }
-  };
+  }
 
-  this.shutUpAndContinue = function () {
-    window.console.log("pepperCtrl shutUp and Continue! ");
-    if (isDesktop == false) {
+  shutUpAndContinue(): void {
+    debugLogger("pepperCtrl shutUp and Continue! ");
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpContEvent", "");
     }
-  };
+  }
 
-  this.getTired = function (meinText) {
-    window.console.log(`pepperCtrl getTired: ${meinText}`);
-    if (isDesktop == false) {
+  getTired(meinText: string): void {
+    debugLogger(`pepperCtrl getTired: ${meinText}`);
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/TiredEvent", meinText);
     }
-  };
+  }
 
-  this.sayGesture = function (gestureCmd, meinText) {
+  sayGesture(gestureCmd, meinText: string): void {
     finalText = meinText.replace(
       "*",
       `^mode(disabled) ${gestureCmd}^mode(contextual)`,
     );
-    window.console.log(`pepperCtrl sayGesture: ${finalText}`);
-    if (isDesktop == false) {
+    debugLogger(`pepperCtrl sayGesture: ${finalText}`);
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/SayGestureEvent", finalText);
     }
-  };
+  }
 
-  this.sayEvent = function (meinEvent, meinText) {
-    window.console.log(`pepperCtrl sayEvent: ${meinEvent} ${meinText}`);
-    if (isDesktop == false) {
+  sayEvent(meinEvent, meinText: string): void {
+    debugLogger(`pepperCtrl sayEvent: ${meinEvent} ${meinText}`);
+    if (!this.isProduction) {
       switch (meinEvent) {
         case "Sax":
           $.raiseALMemoryEvent("SBR/Test/Tablet/PlaySaxEvent", meinText);
@@ -125,23 +121,23 @@ export class PepperController() {
           );
       }
     }
-  };
+  }
 
-  this.wegHinweis = function (direction, meinText) {
-    window.console.log(`pepperCtrl WegHinweis ${direction}${meinText}`);
-    if (isDesktop == false) {
-      if (direction == "left") {
+  wegHinweis(direction: "left", meinText: string): void {
+    debugLogger(`pepperCtrl WegHinweis ${direction}${meinText}`);
+    if (!this.isProduction) {
+      if (direction === "left") {
         $.raiseALMemoryEvent("SBR/Test/Tablet/DirectionLeftEvent", meinText);
       } else {
         $.raiseALMemoryEvent("SBR/Test/Tablet/DirectionRightEvent", meinText);
       }
     }
-  };
+  }
 
-  this.playSound = function (numSound) {
-    window.console.log(`pepperCtrl playSound num: ${numSound}`);
+  playSound(numSound: number): void {
+    debugLogger(`pepperCtrl playSound num: ${numSound}`);
     // Pfad startet von ..../behavior_1
-    soundFile = "/sounds/pling.wav";
+    let soundFile = "/sounds/pling.wav";
     switch (numSound) {
       case 0:
         soundFile = "/sounds/pling.wav";
@@ -170,8 +166,12 @@ export class PepperController() {
       default:
         soundFile = "/sounds/pling.wav";
     }
-    if (isDesktop == false) {
+    if (!this.isProduction) {
       $.raiseALMemoryEvent("SBR/Test/Tablet/Sound", soundFile);
     }
-  };
+  }
+}
+
+export enum PepperControllerRole {
+  Boy = "Boy",
 }
