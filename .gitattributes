@@ -1,0 +1,2 @@
+// patch for you fuckers on windows so you dont destroy the line endings of images and other files
+* text=auto eol=lf

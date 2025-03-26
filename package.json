@@ -1,0 +1,62 @@
+{
+    "name": "TODO",
+    "version": "2.0.0",
+    "private": true,
+    "license": "GPL-3.0-only",
+    "type": "module",
+    "scripts": {
+        "dev": "yarn dev:db-setup && next dev",
+        "dev:debug": "DEBUG=next*,turbo* RUST_LOG=debug next dev",
+        "preview": "next build && next start",
+        "build": "sovendus-builder build",
+        "pub": "sovendus-release-tool",
+        "lint": "eslint --fix",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TODO/TODO.git"
+    },
+    "contributors": [
+        {
+            "name": "Marcus Brandstaetter",
+            "email": "max@tfq.at"
+        }
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "next": "^15.2.4",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "@types/react": "19.0.12",
+        "@types/react-dom": "19.0.4",
+        "@typescript-eslint/eslint-plugin": "8.28.0",
+        "@typescript-eslint/parser": "8.28.0",
+        "eslint": "9.23.0",
+        "eslint-config-next": "15.2.4",
+        "eslint-config-prettier": "10.1.1",
+        "eslint-import-resolver-typescript": "^4.2.4",
+        "eslint-plugin-import": "2.31.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "5.2.5",
+        "eslint-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
+        "eslint-plugin-react-hooks": "5.2.0",
+        "eslint-plugin-simple-import-sort": "12.1.1",
+        "eslint-plugin-unused-imports": "4.1.4",
+        "postcss": "8",
+        "prettier": "3.5.3",
+        "prettier-plugin-sort-json": "^4.1.1",
+        "sovendus-builder": "^1.3.6",
+        "sovendus-release-tool": "^1.4.2",
+        "tailwind-merge": "3.0.2",
+        "tailwindcss": "4.0.17",
+        "tailwindcss-animate": "^1.0.7",
+        "typescript": "5.8.2",
+        "vitest": "^3.0.9",
+        "@tailwindcss/postcss": "^4.0.17",
+        "class-variance-authority": "0.7.1",
+        "clsx": "2.1.1",
+        "cmdk": "1.1.1"
+    }
+}
