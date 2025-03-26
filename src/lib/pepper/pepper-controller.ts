@@ -1,6 +1,10 @@
 // pepper-controller.ts: provides API / Control-Functions of Pepper Robot
 
 import { debugLogger } from "../utils";
+import { qiHelper } from "./qihelper";
+
+// Check if jQuery is available
+const useJQuery = typeof $ !== 'undefined' && $ !== null;
 
 export class PepperController {
   public isProduction: boolean = process.env.NODE_ENV === "production";
@@ -11,6 +15,15 @@ export class PepperController {
     //   this.isProduction = true;
     // }
     debugLogger("PepperController: this.isProduction= ", this.isProduction);
+    debugLogger("PepperController: using " + (useJQuery ? "jQuery" : "QiHelper"));
+  }
+
+  private raiseALMemoryEvent(event: string, value: any): void {
+    if (useJQuery) {
+      $.raiseALMemoryEvent(event, value);
+    } else {
+      qiHelper.raiseALMemoryEvent(event, value);
+    }
   }
 
   animatedSpeak(role: PepperControllerRole, meinText: string): void {
@@ -18,9 +31,9 @@ export class PepperController {
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
     if (!this.isProduction) {
       if (role === PepperControllerRole.Boy) {
-        $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventBoy", meinText);
+        this.raiseALMemoryEvent("SBR/Test/Tablet/TextEventBoy", meinText);
       } else {
-        $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", meinText);
+        this.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", meinText);
       }
     }
   }
@@ -29,81 +42,81 @@ export class PepperController {
     debugLogger(`pepperCtrl animatedSpeakAngry: ${role} ${meinText}`);
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventAngry", meinText);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/TextEventAngry", meinText);
     }
   }
 
   volPlus(): void {
     debugLogger("pepperCtrl volPlus");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/VolLauter");
+      this.raiseALMemoryEvent("SBR/Test/Tablet/VolLauter");
     }
   }
 
   volMinus(): void {
     debugLogger("pepperCtrl volMinus");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/VolLeiser");
+      this.raiseALMemoryEvent("SBR/Test/Tablet/VolLeiser");
     }
   }
 
   setMute(): void {
     debugLogger("pepperCtrl setMute");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 1);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 1);
     }
   }
 
   setUnmute(): void {
     debugLogger("pepperCtrl setUnmute");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 0);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 0);
     }
   }
 
   winner(meinText: string): void {
     debugLogger(`pepperCtrl winner: ${meinText}`);
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/WinnerEvent", meinText);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/WinnerEvent", meinText);
     }
   }
 
   looser(meinText: string): void {
     debugLogger(`pepperCtrl looser: ${meinText}`);
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/LooserEvent", meinText);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/LooserEvent", meinText);
     }
   }
 
   shutUp(): void {
     debugLogger("pepperCtrl shutUp! ");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpEvent", "");
+      this.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpEvent", "");
     }
   }
 
   shutUpAndContinue(): void {
     debugLogger("pepperCtrl shutUp and Continue! ");
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpContEvent", "");
+      this.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpContEvent", "");
     }
   }
 
   getTired(meinText: string): void {
     debugLogger(`pepperCtrl getTired: ${meinText}`);
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/TiredEvent", meinText);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/TiredEvent", meinText);
     }
   }
 
-  sayGesture(gestureCmd, meinText: string): void {
-    finalText = meinText.replace(
+  sayGesture(gestureCmd: string, meinText: string): void {
+    const finalText = meinText.replace(
       "*",
       `^mode(disabled) ${gestureCmd}^mode(contextual)`,
     );
     debugLogger(`pepperCtrl sayGesture: ${finalText}`);
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/SayGestureEvent", finalText);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/SayGestureEvent", finalText);
     }
   }
 
@@ -112,10 +125,10 @@ export class PepperController {
     if (!this.isProduction) {
       switch (meinEvent) {
         case "Sax":
-          $.raiseALMemoryEvent("SBR/Test/Tablet/PlaySaxEvent", meinText);
+          this.raiseALMemoryEvent("SBR/Test/Tablet/PlaySaxEvent", meinText);
           break;
         default:
-          $.raiseALMemoryEvent(
+          this.raiseALMemoryEvent(
             "SBR/Test/Tablet/TextEventBoy",
             "Ups, falscher Parameter",
           );
@@ -127,9 +140,9 @@ export class PepperController {
     debugLogger(`pepperCtrl WegHinweis ${direction}${meinText}`);
     if (!this.isProduction) {
       if (direction === "left") {
-        $.raiseALMemoryEvent("SBR/Test/Tablet/DirectionLeftEvent", meinText);
+        this.raiseALMemoryEvent("SBR/Test/Tablet/DirectionLeftEvent", meinText);
       } else {
-        $.raiseALMemoryEvent("SBR/Test/Tablet/DirectionRightEvent", meinText);
+        this.raiseALMemoryEvent("SBR/Test/Tablet/DirectionRightEvent", meinText);
       }
     }
   }
@@ -167,7 +180,7 @@ export class PepperController {
         soundFile = "/sounds/pling.wav";
     }
     if (!this.isProduction) {
-      $.raiseALMemoryEvent("SBR/Test/Tablet/Sound", soundFile);
+      this.raiseALMemoryEvent("SBR/Test/Tablet/Sound", soundFile);
     }
   }
 }
