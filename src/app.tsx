@@ -1,9 +1,10 @@
+import type { JSX } from "react";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { HomePage } from "./pages/HomePage";
 
-const App: React.FC = () => {
+export function App(): JSX.Element {
   return (
     <Router>
       <Routes>
@@ -13,6 +14,4 @@ const App: React.FC = () => {
       </Routes>
     </Router>
   );
-};
-
-export default App;
+}
