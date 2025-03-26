@@ -7,7 +7,8 @@
     "scripts": {
         "dev": "vite",
         "preview": "vite preview",
-        "build": "sovendus-builder build",
+        "build": "vite build",
+        "build_": "sovendus-builder build",
         "pub": "sovendus-release-tool",
         "lint": "eslint --fix",
         "test": "vitest run",
