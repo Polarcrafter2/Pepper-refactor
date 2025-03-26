@@ -1,4 +1,5 @@
 import type { BuildConfig } from "sovendus-builder";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 const buildConfig: BuildConfig = {
   foldersToClean: ["dist"],
@@ -17,11 +18,12 @@ const buildConfig: BuildConfig = {
         inlineCss: false,
 
         otherOptions: {
-          //   plugins: [
-          //     viteLegacyPlugin({
-          //       targets: ["ie >= 11"],
-          //     }),
-          //   ],
+          plugins: [
+            //     viteLegacyPlugin({
+            //       targets: ["ie >= 11"],
+            //     }),
+            viteSingleFile(),
+          ],
           root: "./src",
         },
         outputOptions: {

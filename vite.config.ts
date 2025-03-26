@@ -17,6 +17,7 @@ export default defineConfig({
     viteSingleFile(),
   ],
   build: {
+    minify: false,
     outDir: resolve(__dirname, "dist/html"),
     rollupOptions: {
       input: {

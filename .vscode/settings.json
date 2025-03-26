@@ -38,7 +38,6 @@
   },
   "files.eol": "\n",
   "files.associations": {
-    "schema.prisma.template": "prisma",
     "translation_de_DE.ts": "xml"
   },
 }
