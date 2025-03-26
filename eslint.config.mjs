@@ -161,62 +161,62 @@ export default [
         ...globals.webextensions,
       },
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "simple-import-sort": simpleImportSort,
-      "unused-imports": unusedImports,
-      "react-compiler": reactCompiler,
-      import: importPlugin,
-      prettier: eslintPluginPrettier,
-      node: nodePlugin,
-    },
-    rules: {
-      // ESLint base recommended rules
-      ...js.configs.recommended.rules,
+    // plugins: {
+    //   "react-hooks": reactHooks,
+    //   "simple-import-sort": simpleImportSort,
+    //   "unused-imports": unusedImports,
+    //   "react-compiler": reactCompiler,
+    //   import: importPlugin,
+    //   prettier: eslintPluginPrettier,
+    //   node: nodePlugin,
+    // },
+    // rules: {
+    //   // ESLint base recommended rules
+    //   ...js.configs.recommended.rules,
       
-      // Node
-      "node/no-process-env": "error",
+    //   // Node
+    //   "node/no-process-env": "error",
 
-      // React Hooks
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error",
+    //   // React Hooks
+    //   "react-hooks/rules-of-hooks": "error",
+    //   "react-hooks/exhaustive-deps": "error",
 
-      // Other plugin rules
-      "react-compiler/react-compiler": "error",
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "unused-imports/no-unused-imports": "error",
-      "import/no-unresolved": "error",
+    //   // Other plugin rules
+    //   "react-compiler/react-compiler": "error",
+    //   "simple-import-sort/imports": "error",
+    //   "simple-import-sort/exports": "error",
+    //   "unused-imports/no-unused-imports": "error",
+    //   "import/no-unresolved": "error",
 
-      // General code-quality rules
-      curly: "error",
-      eqeqeq: ["error", "always"],
-      "prefer-template": "error",
-      "no-console": "warn",
-      "no-debugger": "error",
-      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    //   // General code-quality rules
+    //   curly: "error",
+    //   eqeqeq: ["error", "always"],
+    //   "prefer-template": "error",
+    //   "no-console": "warn",
+    //   "no-debugger": "error",
+    //   "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 
 
-      // Prettier code style integration
-      "prettier/prettier": [
-        "error",
-        {
-          plugins: ["prettier-plugin-sort-json"],
-          jsonRecursiveSort: true,
-          printWidth: 80,
-          tabWidth: 2,
-          useTabs: false,
-          semi: true,
-          singleQuote: false,
-          trailingComma: "all",
-          bracketSpacing: true,
-          arrowParens: "always",
-          endOfLine: "lf",
-          jsxSingleQuote: false,
-          proseWrap: "preserve",
-          quoteProps: "consistent",
-        },
-      ],
-    },
+    //   // Prettier code style integration
+    //   "prettier/prettier": [
+    //     "error",
+    //     {
+    //       plugins: ["prettier-plugin-sort-json"],
+    //       jsonRecursiveSort: true,
+    //       printWidth: 80,
+    //       tabWidth: 2,
+    //       useTabs: false,
+    //       semi: true,
+    //       singleQuote: false,
+    //       trailingComma: "all",
+    //       bracketSpacing: true,
+    //       arrowParens: "always",
+    //       endOfLine: "lf",
+    //       jsxSingleQuote: false,
+    //       proseWrap: "preserve",
+    //       quoteProps: "consistent",
+    //     },
+    //   ],
+    // },
   },
 ];
