@@ -1,3 +1,4 @@
+import viteLegacyPlugin from "@vitejs/plugin-legacy";
 import type { BuildConfig } from "sovendus-builder";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
@@ -19,9 +20,9 @@ const buildConfig: BuildConfig = {
 
         otherOptions: {
           plugins: [
-            //     viteLegacyPlugin({
-            //       targets: ["ie >= 11"],
-            //     }),
+                viteLegacyPlugin({
+                  targets: ["ie >= 11"],
+                }),
             viteSingleFile(),
           ],
           root: "./src",

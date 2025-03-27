@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 
 import tailwindcss from "@tailwindcss/vite";
-// import viteLegacyPlugin from "@vitejs/plugin-legacy";
+import viteLegacyPlugin from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { viteSingleFile } from "vite-plugin-singlefile";
@@ -11,9 +11,9 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
-    // viteLegacyPlugin({
-    //   targets: ["ie >= 11"],
-    // }),
+    viteLegacyPlugin({
+      targets: ["ie >= 11"],
+    }),
     viteSingleFile(),
   ],
   build: {
