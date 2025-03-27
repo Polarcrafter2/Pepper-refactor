@@ -4,12 +4,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigation } from "@/lib/router";
 
-export function HomePage(): JSX.Element {
+export function ExamplePage(): JSX.Element {
   const { push, back } = useNavigation();
   return (
     <div>
-      <h1 className="text-6xl">Hello from Bot</h1>
-      <Button onClick={() => push("/page-example")}>Go to some page</Button>
+      <h1 className="text-6xl">ExamplePage</h1>
+      <Button onClick={() => push("/")}>Back</Button>
       <Button onClick={back}>Home</Button>
     </div>
   );
