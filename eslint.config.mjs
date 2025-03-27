@@ -32,7 +32,7 @@ export default [
       "eslint.config.mjs",
       ".next",
       "node_modules",
-      "/home/max/projects/daniel/src/assets/translations/translation_de_DE.ts"
+      "src/assets/translations/translation_de_DE.ts"
     ],
   },
 
