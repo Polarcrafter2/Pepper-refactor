@@ -22,11 +22,12 @@ export const Router = ({
 
   useEffect(() => {
     if (routesCount === 0) {
+      // register only once
       registerRoutes(routes, notFoundPage);
     }
   }, [routes, notFoundPage, routesCount, registerRoutes]);
 
-  // Render current component
+  // Render current page
   const currentComponent = useRouter((state) => state.getCurrentComponent());
   return currentComponent;
 };
@@ -93,8 +94,7 @@ export const useRouter = create<RouterState>()(
 
       getCurrentComponent: (): JSX.Element => {
         const { currentPath, routes, notFoundPage } = get();
-
-        // Check if the exact route exists
+        // Check if the route exists
         if (routes[currentPath]) {
           return routes[currentPath];
         }

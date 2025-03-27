@@ -1,6 +1,4 @@
-import viteLegacyPlugin from "@vitejs/plugin-legacy";
 import type { BuildConfig } from "sovendus-builder";
-import { viteSingleFile } from "vite-plugin-singlefile";
 
 const buildConfig: BuildConfig = {
   foldersToClean: ["dist"],
@@ -20,12 +18,17 @@ const buildConfig: BuildConfig = {
 
         otherOptions: {
           plugins: [
-                viteLegacyPlugin({
-                  targets: ["ie >= 11"],
-                }),
-            viteSingleFile(),
+            // viteLegacyPlugin({
+            //   targets: ["ie >= 11"],
+            // }),
+            // viteSingleFile(),
           ],
           root: "./src",
+          resolve: {
+            alias: {
+              "@": "./src",
+            },
+          },
         },
         outputOptions: {
           entryFileNames: undefined,
@@ -37,6 +40,7 @@ const buildConfig: BuildConfig = {
           input: {
             main: "src/index.html",
           },
+          external: ["fsevents"],
         },
       },
     },

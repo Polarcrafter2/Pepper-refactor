@@ -16,6 +16,11 @@ export default defineConfig({
     }),
     viteSingleFile(),
   ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+    },
+  },
   build: {
     minify: false,
     outDir: resolve(__dirname, "dist/html"),
