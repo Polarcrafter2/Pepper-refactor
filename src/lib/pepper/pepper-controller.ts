@@ -3,7 +3,7 @@
 import { debugLogger } from "../logger";
 import { EventTypes, qiHelper } from "./qihelper";
 
-export class PepperController {
+class PepperController {
   constructor() {
     debugLogger("PepperController initialisiert");
   }
