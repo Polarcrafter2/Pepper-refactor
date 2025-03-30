@@ -8,10 +8,11 @@ import {
 } from "./components/ui/resizable";
 import { debugLogger, errorLogger, errorStorage } from "./lib/logger";
 import { Router } from "./lib/router";
+import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ContactPage } from "./pages/ContactPage";
 
+// set this to true to enable the console
 const debug = true;
 
 export function App(): JSX.Element {

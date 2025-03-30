@@ -101,12 +101,3 @@ export function captureConsoleLogs(): void {
     };
   });
 }
-
-export async function tryCatch<Tdata>(callback: () => Promise<Tdata> | Tdata): Promise<Tdata> {
-  try {
-    return await callback();
-  } catch (error) {
-    errorLogger("An error occurred:", error);
-    throw error;
-  }
-}
