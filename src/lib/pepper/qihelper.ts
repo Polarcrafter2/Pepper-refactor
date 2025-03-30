@@ -1,12 +1,11 @@
+import { debugLogger, errorLogger, tryCatch } from "../logger";
+
 /**
  * QiHelper
  *
  * A class-based implementation for interacting with QiMessaging
  * Provides similar functionality to jquery.qimhelpers.js without jQuery dependency
  */
-
-import { debugLogger, errorLogger } from "../logger";
-
 declare class QiSession {
   constructor(onConnect: (session: any) => void, onDisconnect: () => void);
   service(name: string): Promise<any>;
@@ -28,35 +27,41 @@ class MemoryEventSubscription {
   }
 
   setId(id: number): void {
-    this._internalId = id;
-    // as id can be received after unsubscribe call, defer
-    if (this._unsubscribe) {
-      this.unsubscribe(this._unsubscribeCallback);
-    }
+    tryCatch(() => {
+      this._internalId = id;
+      // as id can be received after unsubscribe call, defer
+      if (this._unsubscribe) {
+        this.unsubscribe(this._unsubscribeCallback);
+      }
+    });
   }
 
   setSubscriber(sub: any): void {
-    this._sub = sub;
-    // as sub can be received after unsubscribe call, defer
-    if (this._unsubscribe) {
-      this.unsubscribe(this._unsubscribeCallback);
-    }
+    tryCatch(() => {
+      this._sub = sub;
+      // as sub can be received after unsubscribe call, defer
+      if (this._unsubscribe) {
+        this.unsubscribe(this._unsubscribeCallback);
+      }
+    });
   }
 
   unsubscribe(unsubscribeDoneCallback?: () => void): void {
-    if (this._internalId !== null && this._sub !== null) {
-      const evtSubscription = this;
-      evtSubscription._sub.signal
-        .disconnect(evtSubscription._internalId)
-        .then(() => {
-          if (unsubscribeDoneCallback) {
-            unsubscribeDoneCallback();
-          }
-        }, this.onQimError);
-    } else {
-      this._unsubscribe = true;
-      this._unsubscribeCallback = unsubscribeDoneCallback;
-    }
+    tryCatch(() => {
+      if (this._internalId !== null && this._sub !== null) {
+        const evtSubscription = this;
+        evtSubscription._sub.signal
+          .disconnect(evtSubscription._internalId)
+          .then(() => {
+            if (unsubscribeDoneCallback) {
+              unsubscribeDoneCallback();
+            }
+          }, this.onQimError);
+      } else {
+        this._unsubscribe = true;
+        this._unsubscribeCallback = unsubscribeDoneCallback;
+      }
+    });
   }
 
   private onQimError(data: any): void {
@@ -68,10 +73,19 @@ export class QiHelper {
   private qiSession: QiSession;
   private servicePromises: Record<string, Promise<any>> = {};
 
+  public isProduction: boolean = false;
+
   constructor() {
-    this.qiSession = new QiSession(() => {
-      debugLogger("connected");
-    }, this.disconnected);
+    tryCatch(() => {
+      debugLogger("PepperController initialisiert");
+      if (window.navigator.userAgent.indexOf("Windows NT") != -1) {
+        this.isProduction = true;
+        this.qiSession = new QiSession(() => {
+          debugLogger("connected");
+        }, this.disconnected);
+      }
+      debugLogger("PepperController: this.isProduction= ", this.isProduction);
+    });
   }
 
   private disconnected(): void {
@@ -92,20 +106,26 @@ export class QiHelper {
     serviceName: string,
     doneCallback: (service: T) => void,
   ): Promise<T> {
-    if (!(serviceName in this.servicePromises)) {
-      this.servicePromises[serviceName] = this.qiSession.service(serviceName);
-    }
-    return this.servicePromises[serviceName].then(doneCallback, (error) => {
-      errorLogger(`Failed getting ${serviceName}: ${error}`);
+    tryCatch(() => {
+      if (!(serviceName in this.servicePromises)) {
+        this.servicePromises[serviceName] = this.qiSession.service(serviceName);
+      }
+      return this.servicePromises[serviceName].then(doneCallback, (error) => {
+        errorLogger(`Failed getting ${serviceName}: ${error}`);
+      });
     });
   }
 
   /**
    * Helper function for directly raising an ALMemory event
    */
-  raiseALMemoryEvent(event: string, value?: number | string): Promise<void> {
-    return this.getService("ALMemory", (ALMemory) => {
-      ALMemory.raiseEvent(event, value);
+  raiseALMemoryEvent(event: string, value?: number | string): Promise<any> {
+    return tryCatch(() => {
+      return this.getService("ALMemory", (ALMemory) => {
+        tryCatch(() => {
+          ALMemory.raiseEvent(event, value);
+        });
+      });
     });
   }
 

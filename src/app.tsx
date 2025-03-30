@@ -10,6 +10,7 @@ import { debugLogger, errorLogger, errorStorage } from "./lib/logger";
 import { Router } from "./lib/router";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ContactPage } from "./pages/ContactPage";
 
 const debug = true;
 
@@ -22,7 +23,8 @@ export function App(): JSX.Element {
         <Router
           routes={{
             "/": <HomePage />,
-            "/page-example": <HomePage />,
+            "/page-example": <ContactPage />,
+            "/notFound": <NotFoundPage />,
           }}
           notFoundPage={<NotFoundPage />}
         />
@@ -37,7 +39,7 @@ function ConsoleWrapper({ children }: { children: JSX.Element }): JSX.Element {
       <ResizablePanel defaultSize={75}>{children}</ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={25}>
-        <div className=" bg-blue-50 text-white p-4 h-full overflow-y-scroll">
+        <div className=" bg-blue-50 text-black p-4 h-full overflow-y-scroll">
           {errorStorage.map((element, index) => (
             <div key={index}>{element}</div>
           ))}

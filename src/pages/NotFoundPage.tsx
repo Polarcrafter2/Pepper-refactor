@@ -8,7 +8,7 @@ export function NotFoundPage(): JSX.Element {
   const { push, back } = useNavigation();
   return (
     <div>
-      <h1 className="text-6xl">Whoops not found </h1>
+      <h1 className="text-6xl">404 not found </h1>
       <Button onClick={() => push("/")}>Back</Button>
       <Button onClick={back}>Home</Button>
     </div>

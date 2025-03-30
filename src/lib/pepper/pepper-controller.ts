@@ -5,14 +5,9 @@ import { qiHelper } from "./qihelper";
 
 export class PepperController {
   // eslint-disable-next-line node/no-process-env
-  public isProduction: boolean = process.env["NODE_ENV"] === "production";
 
   constructor() {
     debugLogger("PepperController initialisiert");
-    // if (window.navigator.userAgent.indexOf("Windows NT") != -1) {
-    //   this.isProduction = true;
-    // }
-    debugLogger("PepperController: this.isProduction= ", this.isProduction);
   }
 
   async animatedSpeak(
@@ -21,7 +16,7 @@ export class PepperController {
   ): Promise<void> {
     debugLogger(`pepperCtrl animatedSpeak: ${role} ${meinText}`);
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       if (role === PepperControllerRole.Boy) {
         await qiHelper.raiseALMemoryEvent(
           "SBR/Test/Tablet/TextEventBoy",
@@ -42,7 +37,7 @@ export class PepperController {
   ): Promise<void> {
     debugLogger(`pepperCtrl animatedSpeakAngry: ${role} ${meinText}`);
     // debug: $.raiseALMemoryEvent("SBR/Test/Tablet/TextEventGirl", "Hallo Test");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent(
         "SBR/Test/Tablet/TextEventAngry",
         meinText,
@@ -52,35 +47,35 @@ export class PepperController {
 
   async volPlus(): Promise<void> {
     debugLogger("pepperCtrl volPlus");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/VolLauter");
     }
   }
 
   async volMinus(): Promise<void> {
     debugLogger("pepperCtrl volMinus");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/VolLeiser");
     }
   }
 
   async setMute(): Promise<void> {
     debugLogger("pepperCtrl setMute");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 1);
     }
   }
 
   async setUnmute(): Promise<void> {
     debugLogger("pepperCtrl setUnmute");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/MuteOnOff", 0);
     }
   }
 
   async winner(meinText: string): Promise<void> {
     debugLogger(`pepperCtrl winner: ${meinText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent(
         "SBR/Test/Tablet/WinnerEvent",
         meinText,
@@ -90,7 +85,7 @@ export class PepperController {
 
   async looser(meinText: string): Promise<void> {
     debugLogger(`pepperCtrl looser: ${meinText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent(
         "SBR/Test/Tablet/LooserEvent",
         meinText,
@@ -100,21 +95,21 @@ export class PepperController {
 
   async shutUp(): Promise<void> {
     debugLogger("pepperCtrl shutUp! ");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpEvent", "");
     }
   }
 
   async shutUpAndContinue(): Promise<void> {
     debugLogger("pepperCtrl shutUp and Continue! ");
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/ShutUpContEvent", "");
     }
   }
 
   async getTired(meinText: string): Promise<void> {
     debugLogger(`pepperCtrl getTired: ${meinText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/TiredEvent", meinText);
     }
   }
@@ -125,7 +120,7 @@ export class PepperController {
       `^mode(disabled) ${gestureCmd}^mode(contextual)`,
     );
     debugLogger(`pepperCtrl sayGesture: ${finalText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent(
         "SBR/Test/Tablet/SayGestureEvent",
         finalText,
@@ -135,7 +130,7 @@ export class PepperController {
 
   async sayEvent(meinEvent: "Sax", meinText: string): Promise<void> {
     debugLogger(`pepperCtrl sayEvent: ${meinEvent} ${meinText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       switch (meinEvent) {
         case "Sax":
           await qiHelper.raiseALMemoryEvent(
@@ -154,7 +149,7 @@ export class PepperController {
 
   async wegHinweis(direction: "left", meinText: string): Promise<void> {
     debugLogger(`pepperCtrl WegHinweis ${direction}${meinText}`);
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       if (direction === "left") {
         await qiHelper.raiseALMemoryEvent(
           "SBR/Test/Tablet/DirectionLeftEvent",
@@ -201,7 +196,7 @@ export class PepperController {
       default:
         soundFile = "/sounds/pling.wav";
     }
-    if (!this.isProduction) {
+    if (!qiHelper.isProduction) {
       await qiHelper.raiseALMemoryEvent("SBR/Test/Tablet/Sound", soundFile);
     }
   }
@@ -209,4 +204,5 @@ export class PepperController {
 
 export enum PepperControllerRole {
   Boy = "Boy",
+  Girl = "Girl",
 }

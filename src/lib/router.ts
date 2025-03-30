@@ -4,7 +4,7 @@ import { devtools } from "zustand/middleware";
 
 // this is a simple custom router implementation using Zustand with type safe routes
 
-export type AvailableRoutes = "/" | "/page-example";
+export type AvailableRoutes = "/" | "/page-example" | "/notFound";
 
 export type Routes = {
   [route in AvailableRoutes]: JSX.Element;
