@@ -1,3 +1,7 @@
+/**
+ * This file is required to properly interact with the Pepper robot
+ */
+
 import { debugLogger, errorLogger } from "../logger";
 import { tryCatch, tryCatchAsync } from "../utils";
 

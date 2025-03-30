@@ -11,7 +11,7 @@ yarn dev
 Test locally with compiled files
 
 ```
-yarn dev
+yarn preview
 ```
 
 ## Build

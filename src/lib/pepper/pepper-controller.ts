@@ -1,4 +1,4 @@
-// pepper-controller.ts: provides API / Control-Functions of Pepper Robot
+// provides API / Control-Functions of Pepper Robot
 
 import { debugLogger } from "../logger";
 import { EventTypes, qiHelper } from "./qihelper";
