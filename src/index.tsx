@@ -1,6 +1,6 @@
-// polyfills for older browsers
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+// // polyfills for older browsers
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
 import "./globals.css";
 
 import React from "react";
