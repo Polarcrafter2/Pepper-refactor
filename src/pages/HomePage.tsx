@@ -2,10 +2,8 @@ import type { JSX } from "react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  pepperController,
-  PepperControllerRole,
-} from "@/lib/pepper/pepper-controller";
+import { debugLogger, errorLogger } from "@/lib/logger";
+import type { EventTypes } from "@/lib/pepper/qihelper";
 import { useNavigation } from "@/lib/router";
 
 export function HomePage(): JSX.Element {
@@ -80,11 +78,24 @@ export function HomePage(): JSX.Element {
               size="lg"
               className="w-full bg-green-600 hover:bg-green-700 text-white text-lg h-16"
               onClick={() => {
-                push("/page-example");
-                void pepperController.animatedSpeak(
-                  PepperControllerRole.Boy,
-                  "Hier erhalten Sie einen Überblick über unsere Kontaktmöglichkeiten und Öffnungszeiten.",
-                );
+                try {
+                  new QiSession(
+                    () => {
+                      debugLogger("connected");
+                    },
+                    () => {
+                      errorLogger("disconnected");
+                    },
+                  );
+                } catch (error) {
+                  errorLogger("Error in QiSession constructor: ", error);
+                }
+
+                // push("/page-example");
+                // void pepperController.animatedSpeak(
+                //   PepperControllerRole.Boy,
+                //   "Hier erhalten Sie einen Überblick über unsere Kontaktmöglichkeiten und Öffnungszeiten.",
+                // );
               }}
             >
               Kontakt
@@ -111,4 +122,22 @@ export function HomePage(): JSX.Element {
       </Button> */}
     </div>
   );
+}
+
+declare class QiSession {
+  constructor(onConnect: (session: any) => void, onDisconnect: () => void);
+  service(name: "ALMemory"): Promise<ALMemoryType>;
+  socket(): any;
+}
+
+interface ALMemoryType {
+  subscriber: (event: EventTypes) => Promise<ALMemorySubscriber>;
+  raiseEvent: (event: EventTypes, value?: number | string) => Promise<void>;
+}
+
+interface ALMemorySubscriber {
+  signal: {
+    connect: (callback: (value: any) => void) => Promise<number>;
+    disconnect: (id: number) => Promise<void>;
+  };
 }
