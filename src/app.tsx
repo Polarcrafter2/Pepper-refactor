@@ -40,7 +40,7 @@ function ConsoleWrapper({ children }: { children: JSX.Element }): JSX.Element {
       <ResizablePanel defaultSize={75}>{children}</ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={25}>
-        <div className=" bg-blue-50 text-black p-4 h-full overflow-y-scroll">
+        <div className="bg-blue-50 text-black p-4 h-full overflow-y-scroll">
           {errorStorage.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
