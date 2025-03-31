@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 
 import tailwindcss from "@tailwindcss/vite";
-// import viteLegacyPlugin from "@vitejs/plugin-legacy";
+import viteLegacyPlugin from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
@@ -13,9 +13,9 @@ export default defineConfig({
     tailwindcss(),
     cssInjectedByJsPlugin(),
     react(),
-    // viteLegacyPlugin({
-    //   targets: ["ie >= 11"],
-    // }),
+    viteLegacyPlugin({
+      targets: ["chromeAndroid>=50", "chrome>=50"],
+    }),
     viteSingleFile(),
   ],
   resolve: {
