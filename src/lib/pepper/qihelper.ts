@@ -106,7 +106,7 @@ class MemoryEventSubscription {
   }
 }
 
-export class QiHelper {
+class QiHelper {
   private qiSession: QiSession | undefined;
   private servicePromises: Record<string, Promise<ALMemoryType>> = {};
 
