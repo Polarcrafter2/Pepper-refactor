@@ -1,4 +1,7 @@
-// import "./globals.css";
+// polyfills for older browsers
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import "./globals.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -15,6 +18,10 @@ captureConsoleLogs();
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <div>Hello World, im not insane</div>
+    <div className="h-screen w-screen flex items-center justify-center">
+      <h1 className="text-3xl font-bold underline">
+        Hello World, im not insane
+      </h1>
+    </div>
   </React.StrictMode>,
 );
