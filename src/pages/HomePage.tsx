@@ -11,7 +11,7 @@ import { useNavigation } from "@/lib/router";
 export function HomePage(): JSX.Element {
   const { push, back } = useNavigation();
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="min-h-[60vh] relative flex flex-col">
       {/* Background Image */}
       <div className="fixed inset-0 z-[-1]">
         <div
