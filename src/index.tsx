@@ -1,9 +1,9 @@
-import "./globals.css";
+// import "./globals.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { App } from "./app";
+// import { App } from "./app";
 import { captureConsoleLogs } from "./lib/logger";
 
 const root = ReactDOM.createRoot(
@@ -14,6 +14,7 @@ captureConsoleLogs();
 
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <div>Hello World, im not insane</div>
   </React.StrictMode>,
 );
